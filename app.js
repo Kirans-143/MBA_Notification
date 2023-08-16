@@ -2,6 +2,7 @@ require("./crons/cron");
 const dbConfig = require("./configs/db.config");
 const mongoose = require("mongoose");
 const express = require("express");
+const ticketNotificationModel = require("./models/ticketNotification.model");
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,8 @@ mongoose.connect(
 
 require("./routes/ticketNotification.route")(app);
 
+ticketNotificationModel.collection.drop();
+
 app.listen(7777, () => {
-  console.log("Application started on the port num 3030");
+  console.log("Application started on the port num 7777");
 });
